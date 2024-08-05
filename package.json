@@ -1,0 +1,16 @@
+{
+  "name": "far",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}
