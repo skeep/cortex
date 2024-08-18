@@ -1,0 +1,31 @@
+<%- include('layout', { title: 'Cortex : Inventory' , content: '<h1>Welcome to the inevntory Page</h1>' }) %>
+
+
+<div id="dropArea"
+    style="border: 2px dashed #ccc; width: 300px; height: 150px; text-align: center; line-height: 150px;">
+    Drop CSV file here
+</div>
+<button id="showDataButton" class="btn btn-primary">Show Data from IndexedDB</button>
+<div id="tableContainer"></div>
+
+<!-- Define the Handlebars template for the table -->
+<script id="table-template" type="text/x-handlebars-template">
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                {{#each headers}}
+                <th>{{this}}</th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rows}}
+            <tr>
+                {{#each this}}
+                <td>{{this}}</td>
+                {{/each}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>

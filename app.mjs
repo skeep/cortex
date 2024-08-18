@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-// import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 
@@ -14,8 +13,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// Serve static files (e.g., CSS)
-app.use(express.static(path.join(__dirname, 'views')));
+// Set the views directory to public/views
+app.set('views', path.join(__dirname, 'public/views'));
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Define menu items
 const menuItems = [
