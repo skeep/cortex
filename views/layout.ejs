@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV to IndexedDB</title>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 
 </head>
 
@@ -21,15 +21,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Visualizer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Asset inventory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/settings.html">Settings</a>
-                    </li>
+                    <% menuItems.forEach(item => { %>
+                        <li class="nav-item">
+                            <a class="nav-link <%= currentRoute === item.path ? 'active' : '' %>" href="<%= item.path %>"><%= item.label %></a>
+                        </li>
+                    <% }); %>
                 </ul>
                 <span class="navbar-text">
                     Navbar text with an inline element
@@ -37,40 +33,15 @@
             </div>
         </div>
     </nav>
-    <div id="dropArea"
-        style="border: 2px dashed #ccc; width: 300px; height: 150px; text-align: center; line-height: 150px;">
-        Drop CSV file here
-    </div>
-    <button id="showDataButton" class="btn btn-primary">Show Data from IndexedDB</button>
-    <div id="tableContainer"></div>
-
-    <!-- Define the Handlebars template for the table -->
-    <script id="table-template" type="text/x-handlebars-template">
-        <table class="table table-sm table-striped">
-            <thead>
-                <tr>
-                    {{#each headers}}
-                    <th>{{this}}</th>
-                    {{/each}}
-                </tr>
-            </thead>
-            <tbody>
-                {{#each rows}}
-                <tr>
-                    {{#each this}}
-                    <td>{{this}}</td>
-                    {{/each}}
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </script>
+    <main>
+        <%- content %>
+    </main>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-
-    <script src="uploadfile.js"></script>
+    <!-- <script src="fetch-data.js"></script> -->
 </body>
 
 </html>
