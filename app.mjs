@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Get the directory name of the current module
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
